@@ -6,7 +6,7 @@ RUN dpkg --add-architecture i386 && apt-get update && \
       build-essential gcc-multilib g++-multilib gfortran-multilib \
       python curl m4 cmake libssl-dev libssl-dev:i386 && \
     rm -rf /var/lib/apt/lists/* && \
-    git clone https://github.com/JuliaLang/julia /home/julia-x86_64 && \
+    git clone -b release-0.4 https://github.com/JuliaLang/julia /home/julia-x86_64 && \
     cd /home/julia-x86_64 && \
     DEPS="openblas arpack suitesparse pcre gmp mpfr" && \
     INSTALL="" && DISTCLEAN="" && \
