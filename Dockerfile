@@ -9,11 +9,12 @@ RUN dpkg --add-architecture i386 && apt-get update && \
     git clone https://github.com/JuliaLang/julia /home/julia-x86_64 && \
     cd /home/julia-x86_64 && \
     DEPS="openblas arpack suitesparse pcre gmp mpfr" && \
+    INSTALL="" && DISTCLEAN="" && \
     for dep in $DEPS; do \
-      make -j2 -C deps install-$dep; \
+      INSTALL="$INSTALL install-$dep" && \
+      DISTCLEAN="$DISTCLEAN distclean-$dep"; \
     done && \
-    for dep in $DEPS; do \
-      make -C deps distclean-$dep; \
-    done
+    make -j2 -C deps $INSTALL && \
+    make -C deps $DISTCLEAN
 # distclean should leave in place the installed libraries and headers
 WORKDIR /home/julia-x86_64
