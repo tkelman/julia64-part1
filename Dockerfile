@@ -8,7 +8,7 @@ RUN dpkg --add-architecture i386 && apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     git clone -b release-0.4 https://github.com/JuliaLang/julia /home/julia-x86_64 && \
     cd /home/julia-x86_64 && \
-    DEPS="openblas arpack suitesparse pcre gmp mpfr" && \
+    DEPS="openblas arpack suitesparse pcre gmp mpfr libgit2" && \
     INSTALL="" && DISTCLEAN="" && \
     for dep in $DEPS; do \
       INSTALL="$INSTALL install-$dep" && \
