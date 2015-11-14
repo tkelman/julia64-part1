@@ -18,4 +18,3 @@ RUN dpkg --add-architecture i386 && apt-get update && \
     make -C deps $DISTCLEAN
 # distclean should leave in place the installed libraries and headers
 WORKDIR /home/julia-x86_64
-#
