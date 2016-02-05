@@ -1,4 +1,4 @@
-FROM centos:7
+FROM centos:6
 MAINTAINER Tony Kelman <tony@kelman.net>
 
 RUN yum update -y && \
