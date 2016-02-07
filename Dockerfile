@@ -10,13 +10,9 @@ RUN zypper -n install git ca-certificates-mozilla make which tar curl \
     echo 'override CC = gcc-5' >> Make.user && \
     echo 'override CXX = g++-5' >> Make.user && \
     echo 'override FC = gfortran-5' >> Make.user && \
-    DEPS="openblas arpack suitesparse pcre gmp mpfr libgit2" && \
-    INSTALL="" && DISTCLEAN="" && \
-    for dep in $DEPS; do \
-      INSTALL="$INSTALL install-$dep" && \
-      DISTCLEAN="$DISTCLEAN distclean-$dep"; \
-    done && \
-    make -j2 -C deps $INSTALL && \
-    make -C deps $DISTCLEAN
+    make -j4 -C deps install && \
+    make -j4 -C deps distcleanall && \
+    echo "# the following line is a hack to avoid rebuilding deps after distclean'ed" >> Make.user
+    echo 'override DEP_LIBS =' >> Make.user
 # distclean should leave in place the installed libraries and headers
 WORKDIR /home/julia-x86_64
