@@ -2,8 +2,8 @@ FROM ubuntu:14.04
 MAINTAINER Tony Kelman <tony@kelman.net>
 
 RUN dpkg --add-architecture i386 && apt-get update && \
-    apt-get install -y --no-install-recommends ca-certificates \
-      git make gcc-multilib g++-multilib gfortran-multilib \
+    apt-get install -y --no-install-recommends ca-certificates git \
+      make patch gcc-multilib g++-multilib gfortran-multilib \
       python curl m4 cmake libssl-dev libssl-dev:i386 && \
     rm -rf /var/lib/apt/lists/* && \
     git clone https://github.com/JuliaLang/julia /home/julia-x86_64 && \
