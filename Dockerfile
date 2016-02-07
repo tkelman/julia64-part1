@@ -2,7 +2,7 @@ FROM opensuse:42.1
 MAINTAINER Tony Kelman <tony@kelman.net>
 
 RUN zypper -n install git ca-certificates-mozilla make which tar curl \
-        python patch m4 cmake gcc5-c++ gcc5-fortran libopenssl-devel \
+        python-xml patch m4 cmake gcc5-c++ gcc5-fortran libopenssl-devel \
         glibc-locale ncurses-utils && \
     git clone https://github.com/JuliaLang/julia /home/julia-x86_64 && \
     cd /home/julia-x86_64 && \
