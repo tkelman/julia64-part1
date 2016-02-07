@@ -16,7 +16,7 @@ RUN zypper -n install git ca-certificates-mozilla make which tar curl \
       INSTALL="$INSTALL install-$dep" && \
       DISTCLEAN="$DISTCLEAN distclean-$dep"; \
     done && \
-    make -j2 -C deps $INSTALL && \
-    make -C deps $DISTCLEAN
+    make -j4 -C deps $INSTALL && \
+    make -j4 -C deps $DISTCLEAN
 # distclean should leave in place the installed libraries and headers
 WORKDIR /home/julia-x86_64
