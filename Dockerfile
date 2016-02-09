@@ -10,7 +10,9 @@ RUN zypper -n install git ca-certificates-mozilla make which tar \
     echo 'override CC = gcc-5' >> Make.user && \
     echo 'override CXX = g++-5' >> Make.user && \
     echo 'override FC = gfortran-5' >> Make.user && \
-    DEPS="openblas arpack suitesparse pcre gmp mpfr libgit2" && \
+    DEPS="openblas arpack suitesparse pcre gmp mpfr libgit2
+          libuv openlibm openspecfun utf8proc dsfmt \
+          Rmath-julia unwind patchelf virtualenv" && \
     INSTALL="" && DISTCLEAN="" && \
     for dep in $DEPS; do \
       INSTALL="$INSTALL install-$dep" && \
