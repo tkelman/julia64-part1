@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:12.04
 MAINTAINER Tony Kelman <tony@kelman.net>
 
 RUN dpkg --add-architecture i386 && apt-get update && \
@@ -14,7 +14,7 @@ RUN dpkg --add-architecture i386 && apt-get update && \
       INSTALL="$INSTALL install-$dep" && \
       DISTCLEAN="$DISTCLEAN distclean-$dep"; \
     done && \
-    make -j4 -C deps $INSTALL && \
-    make -j4 -C deps $DISTCLEAN
+    make -j3 -C deps $INSTALL && \
+    make -j3 -C deps $DISTCLEAN
 # distclean should leave in place the installed libraries and headers
 WORKDIR /home/julia-x86_64
